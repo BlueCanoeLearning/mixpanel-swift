@@ -9,7 +9,7 @@
 import Foundation
 
 protocol FlushDelegate {
-    func flush(completion: (() -> Void)?)
+    func flush(completion: ((Bool, String?) -> Void)?)
     #if os(iOS)
     func updateNetworkActivityIndicator(_ on: Bool)
     #endif // os(iOS)
@@ -45,10 +45,10 @@ class Flush: AppLifecycle {
         self.lock = lock
     }
 
-    func flushEventsQueue(_ eventsQueue: Queue, automaticEventsEnabled: Bool?) -> Queue? {
+    func flushEventsQueue(_ eventsQueue: Queue, automaticEventsEnabled: Bool?, completion: ((Bool, String?) -> Void)?) -> Queue? {
         let (automaticEventsQueue, eventsQueue) = orderAutomaticEvents(queue: eventsQueue,
                                                         automaticEventsEnabled: automaticEventsEnabled)
-        var mutableEventsQueue = flushQueue(type: .events, queue: eventsQueue)
+        var mutableEventsQueue = flushQueue(type: .events, queue: eventsQueue, completion: completion)
         if let automaticEventsQueue = automaticEventsQueue {
             mutableEventsQueue?.append(contentsOf: automaticEventsQueue)
         }
@@ -74,18 +74,18 @@ class Flush: AppLifecycle {
     }
 
     func flushPeopleQueue(_ peopleQueue: Queue) -> Queue? {
-        return flushQueue(type: .people, queue: peopleQueue)
+        return flushQueue(type: .people, queue: peopleQueue, completion: nil)
     }
 
     func flushGroupsQueue(_ groupsQueue: Queue) -> Queue? {
-        return flushQueue(type: .groups, queue: groupsQueue)
+        return flushQueue(type: .groups, queue: groupsQueue, completion: nil)
     }
 
-    func flushQueue(type: FlushType, queue: Queue) -> Queue? {
+    func flushQueue(type: FlushType, queue: Queue, completion: ((Bool, String?) -> Void)?) -> Queue? {
         if flushRequest.requestNotAllowed() {
             return queue
         }
-        return flushQueueInBatches(queue, type: type)
+        return flushQueueInBatches(queue, type: type, completion: completion)
     }
 
     func startFlushTimer() {
@@ -118,7 +118,7 @@ class Flush: AppLifecycle {
         }
     }
 
-    func flushQueueInBatches(_ queue: Queue, type: FlushType) -> Queue {
+    func flushQueueInBatches(_ queue: Queue, type: FlushType, completion: ((Bool, String?) -> Void)? = nil) -> Queue {
         var mutableQueue = queue
         while !mutableQueue.isEmpty {
             var shouldContinue = false
@@ -151,11 +151,18 @@ class Flush: AppLifecycle {
                                                     shadowQueue.removeAll()
                                                 }
                                             }
+                                            if let completion = completion {
+                                                completion(success, requestData)
+                                            }
                                             shouldContinue = success
                                             semaphore.signal()
                 })
                 _ = semaphore.wait(timeout: DispatchTime.distantFuture)
                 mutableQueue = shadowQueue
+            } else {
+                if let completion = completion {
+                    completion(false, "Could not parse data into JSON")
+                }
             }
 
             if !shouldContinue {

@@ -7,12 +7,19 @@
 //
 
 protocol AEDelegate {
-    func track(event: String?, properties: Properties?)
+    func track(event: String?, properties: Properties?, completion: ((Bool, String?) -> Void)?)
     func setOnce(properties: Properties)
     func increment(property: String, by: Double)
     #if DECIDE
         func trackPushNotification(_ userInfo: [AnyHashable: Any], event: String)
     #endif
+}
+
+extension AEDelegate {
+    func track(event: String?, properties: Properties?) {
+        self.track(event: event, properties: properties, completion: nil)
+    }
+
 }
 
 #if DECIDE || TV_AUTO_EVENTS

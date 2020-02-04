@@ -45,6 +45,7 @@ protocol AppLifecycle {
 
 /// The class that represents the Mixpanel Instance
 open class MixpanelInstance: CustomDebugStringConvertible, FlushDelegate, AEDelegate {
+    
     /// apiToken string that identifies the project to track data to
     open var apiToken = ""
 
@@ -1120,10 +1121,12 @@ extension MixpanelInstance {
 
      - parameter completion: an optional completion handler for when the flush has completed.
      */
-    open func flush(completion: (() -> Void)? = nil) {
+    open func flush(completion: ((Bool, String?) -> Void)? = nil) {
         if hasOptedOutTracking() {
             if let completion = completion {
-                DispatchQueue.main.async(execute: completion)
+                DispatchQueue.main.async(execute: {
+                    completion(true, nil)
+                })
             }
             return
         }
@@ -1155,7 +1158,8 @@ extension MixpanelInstance {
                 #endif
 
                 let flushEventsQueue = self.flushInstance.flushEventsQueue(self.flushEventsQueue,
-                                                                           automaticEventsEnabled: automaticEventsEnabled)
+                                                                           automaticEventsEnabled: automaticEventsEnabled,
+                                                                           completion: completion)
                 let flushPeopleQueue = self.flushInstance.flushPeopleQueue(self.people.flushPeopleQueue)
                 let flushGroupsQueue = self.flushInstance.flushGroupsQueue(self.flushGroupsQueue)
                 
@@ -1186,7 +1190,9 @@ extension MixpanelInstance {
                 self.archive()
 
                 if let completion = completion {
-                    DispatchQueue.main.async(execute: completion)
+                    DispatchQueue.main.async(execute: {
+                        completion(true, nil)
+                    })
                 }
             }
         }}
@@ -1207,7 +1213,7 @@ extension MixpanelInstance {
      - parameter event:      event name
      - parameter properties: properties dictionary
      */
-    open func track(event: String?, properties: Properties? = nil) {
+    open func track(event: String?, properties: Properties? = nil, completion: ((Bool, String?) -> Void)? = nil) {
         if hasOptedOutTracking() {
             return
         }
@@ -1251,7 +1257,7 @@ extension MixpanelInstance {
         }
 
         if MixpanelInstance.isiOSAppExtension() {
-            flush()
+            flush(completion: completion) // Modify here.
         }
     }
 
