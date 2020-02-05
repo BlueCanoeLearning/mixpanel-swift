@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0316DDDD23EB37960081E24A /* RNMixpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0316DDDC23EB37960081E24A /* RNMixpanel.swift */; };
+		0316DDE323EB380C0081E24A /* RNMixpanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0316DDE223EB380C0081E24A /* RNMixpanel.m */; };
 		05A0200E2202724A00D04A3A /* DisplayTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0200D2202724A00D04A3A /* DisplayTrigger.swift */; };
 		05D4C3E6222F322100D30FC2 /* SelectorEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D4C3E5222F322100D30FC2 /* SelectorEvaluator.swift */; };
 		51DD567C1D306B740045D3DB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DD56791D306B740045D3DB /* Logger.swift */; };
@@ -177,7 +179,24 @@
 		F05767541F8D909600499D9B /* ConnectIntegrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05767531F8D909600499D9B /* ConnectIntegrations.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0316DDD823EB37960081E24A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0316DDDA23EB37960081E24A /* libRNMixpanel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNMixpanel.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0316DDDC23EB37960081E24A /* RNMixpanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNMixpanel.swift; sourceTree = "<group>"; };
+		0316DDE123EB380C0081E24A /* RNMixpanel-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNMixpanel-Bridging-Header.h"; sourceTree = "<group>"; };
+		0316DDE223EB380C0081E24A /* RNMixpanel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNMixpanel.m; sourceTree = "<group>"; };
+		0316DDE423EB38210081E24A /* RNMixpanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNMixpanel.h; sourceTree = "<group>"; };
 		05A0200D2202724A00D04A3A /* DisplayTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayTrigger.swift; sourceTree = "<group>"; };
 		05D4C3E5222F322100D30FC2 /* SelectorEvaluator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorEvaluator.swift; sourceTree = "<group>"; };
 		51DD56791D306B740045D3DB /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -285,6 +304,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0316DDD723EB37960081E24A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		86F86E7E224404BD00B69832 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -317,6 +343,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0316DDDB23EB37960081E24A /* RNMixpanel */ = {
+			isa = PBXGroup;
+			children = (
+				0316DDDC23EB37960081E24A /* RNMixpanel.swift */,
+				0316DDE223EB380C0081E24A /* RNMixpanel.m */,
+				0316DDE123EB380C0081E24A /* RNMixpanel-Bridging-Header.h */,
+				0316DDE423EB38210081E24A /* RNMixpanel.h */,
+			);
+			path = RNMixpanel;
+			sourceTree = "<group>";
+		};
 		51DD56771D306B620045D3DB /* Log */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				E115947F1CFF1491007F8B4F /* Mixpanel */,
+				0316DDDB23EB37960081E24A /* RNMixpanel */,
 				E115947E1CFF1491007F8B4F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -359,6 +397,7 @@
 				E12782B31D4AB4B30025FB05 /* Mixpanel.framework */,
 				E1F15FC91E64A10700391AE3 /* Mixpanel.framework */,
 				86F86E81224404BD00B69832 /* Mixpanel.framework */,
+				0316DDDA23EB37960081E24A /* libRNMixpanel.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -669,6 +708,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0316DDD923EB37960081E24A /* RNMixpanel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0316DDDE23EB37960081E24A /* Build configuration list for PBXNativeTarget "RNMixpanel" */;
+			buildPhases = (
+				0316DDD623EB37960081E24A /* Sources */,
+				0316DDD723EB37960081E24A /* Frameworks */,
+				0316DDD823EB37960081E24A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RNMixpanel;
+			productName = RNMixpanel;
+			productReference = 0316DDDA23EB37960081E24A /* libRNMixpanel.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		86F86E80224404BD00B69832 /* Mixpanel_watchOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 86F86E88224404BD00B69832 /* Build configuration list for PBXNativeTarget "Mixpanel_watchOS" */;
@@ -747,9 +803,16 @@
 		E11594741CFF1491007F8B4F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Mixpanel;
 				TargetAttributes = {
+					0316DDD923EB37960081E24A = {
+						CreatedOnToolsVersion = 11.3.1;
+						DevelopmentTeam = 6VX6XJM7ED;
+						LastSwiftMigration = 1130;
+						ProvisioningStyle = Automatic;
+					};
 					86F86E80224404BD00B69832 = {
 						CreatedOnToolsVersion = 10.1;
 						ProvisioningStyle = Manual;
@@ -790,6 +853,7 @@
 				E12782B21D4AB4B30025FB05 /* Mixpanel_tvOS */,
 				E1F15FC81E64A10700391AE3 /* Mixpanel_macOS */,
 				86F86E80224404BD00B69832 /* Mixpanel_watchOS */,
+				0316DDD923EB37960081E24A /* RNMixpanel */,
 			);
 		};
 /* End PBXProject section */
@@ -834,6 +898,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0316DDD623EB37960081E24A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0316DDDD23EB37960081E24A /* RNMixpanel.swift in Sources */,
+				0316DDE323EB380C0081E24A /* RNMixpanel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		86F86E7D224404BD00B69832 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1016,6 +1089,58 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		0316DDDF23EB37960081E24A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6VX6XJM7ED;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNMixpanel/RNMixpanel-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0316DDE023EB37960081E24A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6VX6XJM7ED;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNMixpanel/RNMixpanel-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		86F86E86224404BD00B69832 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1416,6 +1541,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0316DDDE23EB37960081E24A /* Build configuration list for PBXNativeTarget "RNMixpanel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0316DDDF23EB37960081E24A /* Debug */,
+				0316DDE023EB37960081E24A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		86F86E88224404BD00B69832 /* Build configuration list for PBXNativeTarget "Mixpanel_watchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

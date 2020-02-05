@@ -1,0 +1,29 @@
+{
+  "name": "react-native-mixpanel",
+  "version": "2.7.5",
+  "description": "A React Native wrapper for Mixpanel tracking",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlueCanoeLearning/react-native-mixpanel.git"
+  },
+  "keywords": [
+    "react-native",
+    "react-component",
+    "tracking",
+    "mixpanel"
+  ],
+  "peerDependencies": {
+    "react": ">=16.9.0",
+    "react-native": ">=0.61.5"
+  },
+  "devDependencies": {
+    "react": "16.9.0",
+    "react-native": "0.61.5"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BlueCanoeLearning/react-native-mixpanel/issues"
+  },
+  "homepage": "https://github.com/BlueCanoeLearning/react-native-mixpanel#readme"
+}
