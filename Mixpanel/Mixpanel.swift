@@ -49,6 +49,12 @@ open class Mixpanel {
                                                          automaticPushTracking: automaticPushTracking,
                                                          optOutTrackingByDefault: optOutTrackingByDefault)
     }
+    
+    @objc(sharedInstanceWithToken)
+    open class func sharedInstanceWithToken(token apiToken: string) {
+        return Mixpanel.initialize(token: token)
+    }
+
     #else
     /**
      Initializes an instance of the API with the given project token (MAC OS ONLY).
